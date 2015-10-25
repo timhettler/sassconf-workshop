@@ -1,0 +1,22 @@
+.dummy-image {
+  background-color: slategray;
+  position: relative; }
+  .dummy-image:before {
+    content: '';
+    display: block;
+    padding-bottom: 100%; }
+  .dummy-image:after {
+    content: 'FPO';
+    color: #fff;
+    font: 20px/1 Helvetica;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%; }
+  .container__item {
+    width: 20%; }
