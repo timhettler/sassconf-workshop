@@ -1,0 +1,27 @@
+@include test-module('Example Test') {
+  @include test('Invert Color [function]') {
+    $test: invert(#000);
+    $expect: white;
+
+    @include assert-equal($test, $expect,
+      'The color should be inverted');
+  }
+
+  @include test('Invert Color [mixin]') {
+    @include assert('The text color should be the opposite of the background color') {
+      @mixin invert ($color) {
+        background-color: $color;
+        color: invert($color);
+      }
+
+      @include input {
+        @include invert(#000);
+      }
+
+      @include expect {
+        background-color: #000;
+        color: white;
+      }
+    }
+  }
+}
