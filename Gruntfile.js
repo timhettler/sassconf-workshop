@@ -17,8 +17,27 @@ module.exports = function (grunt) {
     // https://github.com/gruntjs/grunt-contrib-watch
     watch: {
       sass: {
+        options: {
+          livereload: true
+        },
         files: ['sass/**/*.scss'],
         tasks: ['sass'],
+      }
+    },
+
+    // Start a static web server.
+    // https://github.com/gruntjs/grunt-contrib-connect
+    connect: {
+      options: {
+        port: 9000,
+        livereload: 35729,
+        hostname: 'localhost'
+      },
+      demo: {
+        options: {
+          open: true,
+          base: ['demo']
+        }
       }
     },
 
@@ -48,6 +67,8 @@ module.exports = function (grunt) {
   grunt.initConfig(taskConfig);
 
   grunt.registerTask('test', ['clean:test', 'mochacli']);
-  grunt.registerTask('default', ['clean:demo', 'sass:demo']);
+  grunt.registerTask('server', ['clean:demo', 'sass:demo', 'connect:demo', 'watch']);
+  grunt.registerTask('noserver', ['clean:demo', 'sass:demo', 'watch']);
+  grunt.registerTask('default', ['server']);
 
 };
