@@ -1,0 +1,5 @@
+@import '../node_modules/sass-true/sass/true';
+
+@import 'lib/_example.scss';
+
+@include report();
