@@ -1,29 +1,57 @@
-// Sass brand colors (in case you're not feeling creative)
-$hopbush: #c69;
-$bouquet: #b37399;
-$venus: #998099;
-$patina: #699;
-$nebula: #d2e1dd;
-$white: #fff;
-$dawn-pink: #f2ece4;
-$wafer: #e1d7d2;
-$iron: #dadbdf;
-$regent-grey: #808c99;
-$pale-sky: #6b717f;
-$midnight-blue: #036;
+@import "_vars.scss";
 
 @import "_fpo.scss";
 
-.dummy-image {
+// Our mixin
+.scw-dummy-image {
   @include fpo();
 }
 
-.container {
+
+// Page styles
+.scw {
+  background-color: $color--black;
+  color: $color--white;
+  font: $font-size--x-large/1.5 Helvetica;
+}
+
+.scw-header {
+
+  &__logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 50vw;
+  }
+}
+
+.scw-container {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
+  justify-content: space-between;
+  margin: 50px auto;
+  width: 90%;
 
   &__item {
     width: 20%;
   }
+}
+
+.scw-body {
+  display: flex;
+  margin: 0 auto;
+  width: 90%;
+
+  &__item {
+    &--text {
+      width: 50%;
+    }
+    &--image {
+      width: 40%;
+      margin-left: 10%;
+    }
+  }
+}
+
+.scw-banner-text {
+  font-size: $font-size--xx-large;
+  text-transform: uppercase;
 }
