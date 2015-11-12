@@ -1,11 +1,11 @@
-.dummy-image {
-  background-color: slategray;
+.scw-dummy-image {
+  background-color: #438ccb;
   position: relative; }
-  .dummy-image:before {
+  .scw-dummy-image:before {
     content: '';
     display: block;
     padding-bottom: 100%; }
-  .dummy-image:after {
+  .scw-dummy-image:after {
     content: 'FPO';
     color: #fff;
     font: 20px/1 Helvetica;
@@ -14,9 +14,34 @@
     left: 50%;
     transform: translate(-50%, -50%); }
 
-.container {
+.scw {
+  background-color: #252525;
+  color: #fff;
+  font: 21.3333333333px Helvetica; }
+
+.scw-header__logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 50vw; }
+
+.scw-container {
   display: flex;
-  justify-content: space-around;
-  width: 100%; }
-  .container__item {
+  justify-content: space-between;
+  margin: 50px auto;
+  width: 90%; }
+  .scw-container__item {
     width: 20%; }
+
+.scw-body {
+  display: flex;
+  margin: 0 auto;
+  width: 90%; }
+  .scw-body__item--text {
+    width: 50%; }
+  .scw-body__item--image {
+    width: 40%;
+    margin-left: 10%; }
+
+.scw-banner-text {
+  font-size: 48px;
+  text-transform: uppercase; }

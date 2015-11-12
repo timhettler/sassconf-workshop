@@ -1,5 +1,5 @@
 @mixin fpo() {
-  background-color: slategray;
+  background-color: $color--blue;
   position: relative;
 
   &:before {
