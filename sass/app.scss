@@ -1,6 +1,7 @@
 @import "_vars.scss";
 
 @import "_fpo.scss";
+@import "_put-a-bird-on-it.scss";
 
 // Our mixin
 .scw-dummy-image {
@@ -16,11 +17,17 @@
 }
 
 .scw-header {
+  @include put-a-bird-on-it('junco', 100px, $color--gold) {
+    left: 0;
+    top: 0;
+  };
+
+  margin: 0 auto;
+  max-width: 50vw;
 
   &__logo {
     display: block;
-    margin: 0 auto;
-    max-width: 50vw;
+    width: 100%;
   }
 }
 
