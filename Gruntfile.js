@@ -10,7 +10,8 @@ module.exports = function (grunt) {
     // https://github.com/gruntjs/grunt-contrib-clean
     clean: {
       demo: ['demo/styles'],
-      test: ['test/output']
+      test: ['test/output'],
+      sassdoc: ['sassdoc']
     },
 
     // Run tasks whenever watched files change
@@ -22,6 +23,13 @@ module.exports = function (grunt) {
         },
         files: ['sass/**/*.scss'],
         tasks: ['sass'],
+      },
+      sassdoc: {
+        options: {
+          livereload: true
+        },
+        files: ['sass/**/*.scss'],
+        tasks: ['sassdoc'],
       }
     },
 
@@ -37,6 +45,12 @@ module.exports = function (grunt) {
         options: {
           open: true,
           base: ['demo']
+        }
+      },
+      sassdoc: {
+        options: {
+          open: true,
+          base: ['sassdoc']
         }
       }
     },
@@ -67,8 +81,9 @@ module.exports = function (grunt) {
   grunt.initConfig(taskConfig);
 
   grunt.registerTask('test', ['clean:test', 'mochacli']);
-  grunt.registerTask('server', ['clean:demo', 'sass:demo', 'connect:demo', 'watch']);
-  grunt.registerTask('noserver', ['clean:demo', 'sass:demo', 'watch']);
+  grunt.registerTask('server', ['clean:demo', 'sass:demo', 'connect:demo', 'watch:sass']);
+  grunt.registerTask('noserver', ['clean:demo', 'sass:demo', 'watch:sass']);
+  grunt.registerTask('sassdoc-server', ['clean:sassdoc', 'sassdoc', 'connect:sassdoc', 'watch:sassdoc']);
   grunt.registerTask('default', ['server']);
 
 };
