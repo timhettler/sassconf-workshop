@@ -1,0 +1,64 @@
+@import "_vars.scss";
+
+@import "_fpo.scss";
+@import "_put-a-bird-on-it.scss";
+
+// Our mixin
+.scw-dummy-image {
+  @include fpo();
+}
+
+
+// Page styles
+.scw {
+  background-color: $color--black;
+  color: $color--white;
+  font: $font-size--x-large/1.5 Helvetica;
+}
+
+.scw-header {
+  @include put-a-bird-on-it('junco', 100px, $color--gold) {
+    left: 0;
+    top: 0;
+  };
+
+  margin: 0 auto;
+  max-width: 50vw;
+
+  &__logo {
+    display: block;
+    width: 100%;
+  }
+}
+
+.scw-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px auto;
+  width: 90%;
+
+  &__item {
+    width: 20%;
+  }
+}
+
+.scw-body {
+  display: flex;
+  margin: 0 auto;
+  width: 90%;
+
+  &__item {
+    &--text {
+      width: 50%;
+    }
+    &--image {
+      width: 40%;
+      margin-left: 10%;
+    }
+  }
+}
+
+.scw-banner-text {
+  font-size: $font-size--xx-large;
+  text-transform: uppercase;
+}

@@ -1,0 +1,56 @@
+////
+/// @group For Placement Only
+/// @author Tim Hettler
+////
+
+/// The ratio of the fpo element
+/// @type Number
+$fpo-size: 100% !default;
+$fpo-bg: $color--blue !default;
+$fpo-color--text: #fff !default;
+$fpo-text: 'FPO' !default;
+
+%fpo {
+  position: relative;
+  
+  &:before {
+    content: '';
+    display: block;
+  }
+  
+  &:after {
+    font: 20px/1 Helvetica;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin fpo(
+  $size: $fpo-size, 
+  $bg: $fpo-bg, 
+  $color--text: $fpo-color--text, 
+  $text: $fpo-text
+) {
+  @if (type-of($size) != number) {
+    @error "$size requires either a percentage or an integer";
+  }
+  @extend %fpo;
+  background: $bg;
+
+  &:before {
+    padding-bottom: if(unitless($size), percentage($size), $size);
+  }
+  
+  &:after {
+    @if (type-of($bg) == color) {
+      @debug abs(lightness($bg) - lightness($color--text));
+      @if (abs(lightness($bg) - lightness($color--text)) < 25%) {
+        @warn "The contrast between the text and background-color is very low";
+      }
+    }
+    content: $text;
+    color: $color--text;
+  }
+}
