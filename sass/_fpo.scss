@@ -26,6 +26,9 @@ $fpo-text: 'FPO' !default;
   $color--text: $fpo-color--text, 
   $text: $fpo-text
 ) {
+  @if (type-of($size) != number) {
+    @error "$size requires either a percentage or an integer";
+  }
   @extend %fpo;
   background: $bg;
 
@@ -34,6 +37,12 @@ $fpo-text: 'FPO' !default;
   }
   
   &:after {
+    @if (type-of($bg) == color) {
+      @debug abs(lightness($bg) - lightness($color--text));
+      @if (abs(lightness($bg) - lightness($color--text)) < 25%) {
+        @warn "The contrast between the text and background-color is very low";
+      }
+    }
     content: $text;
     color: $color--text;
   }
