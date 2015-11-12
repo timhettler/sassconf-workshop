@@ -2,6 +2,8 @@
 
 Using this repo, we'll learn how to write code for an audience, and share it with the world!
 
+[Slides and Resources](http://timhettler.github.io/sassconf-2015/)
+
 ##Getting Started
 
 1. Fork the repo to make your own copy of it.
