@@ -1,20 +1,40 @@
-@mixin fpo() {
-  background-color: $color--blue;
-  position: relative;
+$fpo-size: 100% !default;
+$fpo-bg: slategray !default;
+$fpo-color--text: #fff !default;
+$fpo-text: 'FPO' !default;
 
+%fpo {
+  position: relative;
+  
   &:before {
     content: '';
     display: block;
-    padding-bottom: 100%;
   }
   
   &:after {
-    content: 'FPO';
-    color: #fff;
     font: 20px/1 Helvetica;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+@mixin fpo(
+  $size: $fpo-size, 
+  $bg: $fpo-bg, 
+  $color--text: $fpo-color--text, 
+  $text: $fpo-text
+) {
+  @extend %fpo;
+  background: $bg;
+
+  &:before {
+    padding-bottom: if(unitless($size), percentage($size), $size);
+  }
+  
+  &:after {
+    content: $text;
+    color: $color--text;
   }
 }
